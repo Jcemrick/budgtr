@@ -13,6 +13,7 @@ const port = process.env.PORT;
 //-------------------------------------
 // Declare Middleware
 //-------------------------------------
+app.use('/budgets', express.urlencoded({extended: true}))
 
 app.use('/', budgetRouter);
 
