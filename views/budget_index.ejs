@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Budget Me</title>
-  <link href="../public/normalize.css" rel="stylesheet" type="text/css">
-  <link href="../public/skeleton.css" rel="stylesheet" type="text/css">
+  <%- include('./partials/head.ejs') %>
 </head>
 <body>
-  
+  <div class='contatiner'>
+    <h1>Budgtr ALL</h1>
+      <table>
+        <% budgetData.forEach((data, index) => { %>
+          <tr>
+            <td>
+              <%= data.date %>
+            </td>
+            <td>
+              <a href="/budgets/<%=index%> "> <%= data.name %> </a> 
+            </td>
+            <td>
+              <%= data.amount %>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+  </div>
 </body>
 </html>

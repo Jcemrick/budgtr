@@ -3,7 +3,8 @@
 //-------------------------------------
 require('dotenv').config();
 const express = require('express');
-const budgetRouter = require('./controllers/budget')
+const budgetRouter = require('./controllers/budget');
+
 
 const app = express();
 
@@ -14,6 +15,8 @@ const port = process.env.PORT;
 //-------------------------------------
 
 app.use('/', budgetRouter);
+
+app.use('/public', express.static('public'));
 
 //-------------------------------------
 // Routes

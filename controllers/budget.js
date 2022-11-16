@@ -2,7 +2,7 @@
 // Dependencies 
 // ----------------------
 const express = require('express');
-const budget = require('../models/budget');
+const Budget = require('../models/budget');
 
 
 
@@ -22,7 +22,10 @@ const router = express.Router();
 
 // GET
 router.get('/', (req, res) =>{
-  res.send('You hit the budget router')
+  // res.send('You hit the budget router')
+  res.render('budget_index.ejs', {
+    budgetData: Budget,
+  })
 });
 
 router.get('/budgets', (req, res) =>{
@@ -30,7 +33,11 @@ router.get('/budgets', (req, res) =>{
 });
 
 router.get('/budgets/:index', (req, res) => {
-  res.send(`this is the ${req.params.index} route`)
+  // res.send(`this is the ${req.params.index} route`)
+  res.render('budget_show.ejs', {
+    budgetIndex: Budget,
+    budgetData: req.params.index,
+  })
 });
 
 router.get('/budgets/new', (req, res) => {

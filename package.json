@@ -1,7 +1,7 @@
 {
   "scripts": {
     "start": "node server.js",
-    "script": "nodemon server.js"
+    "dev": "nodemon server.js"
   },
   "name": "budgtr",
   "version": "1.0.0",
