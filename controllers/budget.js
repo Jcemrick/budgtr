@@ -19,19 +19,21 @@ const router = express.Router();
 // ----------------------
 // Routes
 // ----------------------
+// Index
+router.get('/', (req, res) =>{res.redirect('/budgets')});
 
-// GET
-router.get('/', (req, res) =>{
-  // res.send('You hit the budget router')
+router.get('/budgets', (req, res) =>{
   res.render('budget_index.ejs', {
     budgetData: Budget,
   })
 });
 
-router.get('/budgets', (req, res) =>{
-  res.send('this is budgets route')
+// New
+router.get('/budgets/new', (req, res) => {
+  res.render('budget_new.ejs')
 });
 
+// Show
 router.get('/budgets/:index', (req, res) => {
   // res.send(`this is the ${req.params.index} route`)
   res.render('budget_show.ejs', {
@@ -40,13 +42,11 @@ router.get('/budgets/:index', (req, res) => {
   })
 });
 
-router.get('/budgets/new', (req, res) => {
-  res.send('this is the new route')
-});
 
-// POST
-router.post('/budget', (req, res) => {
-
+// Create
+router.post('/budgets/', (req, res) => {
+  Budget.push(req.body);
+  res.redirect('/budgets')
 })
 
 
