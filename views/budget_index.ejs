@@ -9,20 +9,35 @@
       <form action="budgets/new">
         <input type="submit" value="Add New">
       </form>  
-      <table>
+      <table id="total">
+        <tbody>
         <% budgetData.forEach((data, index) => { %>
           <tr>
-            <td>
-              <%= data.date %>
-            </td>
-            <td>
-              <a href="/budgets/<%=index%> "> <%= data.name %> </a> 
-            </td>
-            <td>
-              <%= data.amount %>
-            </td>
+            <td><%= data.date %></td>
+            <td><a href="/budgets/<%=index%> "> <%= data.name %> </a> </td>
+            <td><%= data.amount %></td>
           </tr>
         <% }) %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td>Total: </td>
+            <td>
+              $<% let bankAccount = 0%>
+              <%budgetData.forEach((index) => {bankAccount += parseInt(index.amount)})%>
+              <%= bankAccount.toFixed(2) %>
+              <script>
+              const total = document.getElementById('total') 
+                if (<%=bankAccount%> < 0) {
+                  total.style.backgroundColor = 'red';
+                } else if (<%=bankAccount%> > 1000) {
+                  total.style.backgroundColor = 'green';
+                } 
+              </script>
+            </td>
+          </tr>
+        </tfoot>
       </table>
   </div>
 </body>
